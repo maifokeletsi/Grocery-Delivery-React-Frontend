@@ -1,0 +1,10 @@
+.nav-link {
+    border: 1px solid black;
+    width: 14vw;
+    color: white;
+  }
+
+  .nav-link:hover
+  {
+    background-color: black;
+  }

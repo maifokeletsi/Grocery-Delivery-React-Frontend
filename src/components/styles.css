@@ -1,0 +1,53 @@
+.nav-link {
+    width: 14vw;
+  }
+
+
+  .nav-link:hover
+  {
+    background-color: white;
+  }
+
+  .navbar {
+    background-color: white;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-link {
+  
+    margin: 0;
+    background-color: rgb(168, 248, 80);
+  }
+  .App {
+    border: 1px solid black;
+    padding: 0;
+  }
+
+ form {
+   background-color: blue;
+   width: 40%;
+   margin: 40px;
+   margin-left: auto;
+   margin-right: auto;
+ }
+ 
+ button {
+  border-radius: 5px;
+  border: none;
+ }
+
+ .theGroceryItem {
+  background-color: yellow;
+  padding: 5px;
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 5px;
+ }
+
+ .editItemButton {
+  margin-left: 10px;
+ }
+
+ 
