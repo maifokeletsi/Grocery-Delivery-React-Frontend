@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
+import { buttonStyle } from './buttonStyles';
 
 export default function VerifyDelivery() {
   const [reqUserNumber, setReqUserNumber] = useState(null);
@@ -38,10 +39,11 @@ export default function VerifyDelivery() {
   };
 
   return (
-    <div>
-      <h5>Verify Delivery Of Order Credentials</h5>
+    <Container className="mt-4">
+      <Row className="justify-content-center">
+        <Col xs={12} md={6} lg={5}>
       <Form onSubmit={handleSubmitOTP}>
-        <Form.Group controlId="formReqUserNum">
+        <Form.Group className="mb-3" controlId="formReqUserNum">
           <Form.Label>Requesting User Phone No:</Form.Label>
           <Form.Control
             type="number"
@@ -52,7 +54,7 @@ export default function VerifyDelivery() {
           />
         </Form.Group>
 
-        <Form.Group controlId="formOTP">
+        <Form.Group className="mb-3" controlId="formOTP">
           <Form.Label>Delivery OTP:</Form.Label>
           <Form.Control
             type="password"
@@ -63,10 +65,12 @@ export default function VerifyDelivery() {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button type="submit" style={buttonStyle}>
           Verify OTP
         </Button>
       </Form>
-    </div>
+    </Col>
+    </Row>
+  </Container>
   );
 }

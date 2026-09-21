@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Alert } from 'react-bootstrap';
+import { buttonStyle } from './buttonStyles';
 
 const OrdersList = () => {
   const [dataList, setData] = useState([]);
@@ -34,8 +35,8 @@ const OrdersList = () => {
               <h5>Requesting Number: {data.reqUserNumber}</h5>
             </Col>
             <Col xs={12} md={6}>
-              <Link to={`/acceptOrder/${data.dueAmt}/${data.orderCode}`} className="btn btn-info mr-2">
-                <Button>Accept Order</Button>
+              <Link to={`/acceptOrder/${data.dueAmt}/${data.orderCode}`} className="btn btn-success mr-2">
+                <Button style={buttonStyle}>Accept Order</Button>
               </Link>
             </Col>
             <Col xs={12}>
@@ -52,7 +53,7 @@ const OrdersList = () => {
         ))
           :
           <div style={{margin: "3%"}}>
-          <Alert variant="info">Currently There Are No Orders</Alert>
+          <Alert variant="info">Currently There Are No Carts</Alert>
           </div>}
     </Container>
   );

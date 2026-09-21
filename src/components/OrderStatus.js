@@ -87,18 +87,18 @@ export default function OrderStatus({ theOrderCode, handleCheckOrder, orderExist
       <Row>
         <Col>
           <h2>Track Order</h2>
-          {(orderExists === false) && <Alert variant="info">Order Status: Not Yet Placed</Alert>}
+          {(orderExists === false) && <Alert variant="info">Cart Status: Not Yet Placed</Alert>}
           {deliveryCodeFrmDB && <Alert variant="info">Verify Delivery OTP: {deliveryCodeFrmDB}</Alert>}
           {cellNoOfReqUser && <Alert variant="info">Your Phone No.: {cellNoOfReqUser}</Alert>}
           {cellNumberOfShoper && <Alert variant="info">Shopper's Phone No.: {cellNumberOfShoper}</Alert>}
-          {orderExists && <Alert variant="info">Order Status: Placed</Alert>}
+          {orderExists && <Alert variant="info">Cart Status: Placed</Alert>}
           {console.log("orderIsAcceptedDB: " + orderIsAcceptedDB)}
-          {(orderIsAcceptedDB == 1) ? <Alert variant="info">Order Status: Accepted</Alert> : <></>}
-          {(orderIsDeliveredDB == 1) ? <Alert variant="info">Order Status: Delivered</Alert> : <></>}
+          {(orderIsAcceptedDB == 1) ? <Alert variant="info">Cart Status: Accepted</Alert> : <></>}
+          {(orderIsDeliveredDB == 1) ? <Alert variant="info">Cart Status: Delivered</Alert> : <></>}
 
           {orderExists &&
             <div>
-              <h4>Ordered Items</h4>
+              <h4>Cart Items</h4>
               <ul>
                 {Array.isArray(data) && data.map((item, index) => (
                   <li key={item.itemId}>

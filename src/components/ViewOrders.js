@@ -22,7 +22,7 @@ function ViewOrders() {
 
     return (
         <div>
-            <h2>Grocery Orders</h2>
+            <h2>Grocery Carts</h2>
             <ul>
                 {orders.map(order => (
                     <li key={order.username}>

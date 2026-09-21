@@ -33,7 +33,7 @@ const Navbar = () => {
               Verify Delivery
             </Link>
             <Link className="nav-link" to="/contactUs" >
-              ContactUs
+              Contact Us
             </Link>
             <Link className="nav-link" to="/trackOrder/" >
               LogIn

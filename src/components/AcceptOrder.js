@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { buttonStyle } from './buttonStyles';
 
 export default function AcceptOrder() {
   const { amtDue, theOrderCode } = useParams();
@@ -65,12 +66,11 @@ export default function AcceptOrder() {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <h5>Accept Order Credentials</h5>
+    <Container className="mt-4">
+      <Row className="justify-content-center">
+        <Col xs={12} md={6} lg={5}>
           <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formShoperNumber">
+            <Form.Group className="mb-3" controlId="formShoperNumber">
               <Form.Label>Cellphone No. :</Form.Label>
               <Form.Control
                 type="text"
@@ -81,7 +81,7 @@ export default function AcceptOrder() {
                 required
               />
             </Form.Group>
-            <Form.Group controlId="formPassword">
+            <Form.Group className="mb-3" controlId="formPassword">
               <Form.Label>Password:</Form.Label>
               <Form.Control
                 type="password"
@@ -92,7 +92,7 @@ export default function AcceptOrder() {
                 required
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button type="submit" style={buttonStyle}>
               SUBMIT
             </Button>
           </Form>

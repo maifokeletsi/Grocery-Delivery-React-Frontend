@@ -10,6 +10,7 @@ import {
     Button,
     Form
 } from "react-bootstrap";
+import { buttonStyle } from './buttonStyles';
 
 function FetchProducts({ theOrderCode }) {
 
@@ -62,10 +63,10 @@ function FetchProducts({ theOrderCode }) {
                 numOfItems: qty,
                 orderCode: theOrderCode,
             });
-            alert(`${product.name.split(/\d/)[0].trim()} added to your order!`);
+            alert(`${product.name.split(/\d/)[0].trim()} added to your cart!`);
             setQuantities((prev) => ({ ...prev, [product.id]: "" }));
         } catch (err) {
-            setError("Unable to add item to order.");
+            setError("Unable to add item to your cart.");
         } finally {
             setAddingId(null);
         }
@@ -85,10 +86,6 @@ function FetchProducts({ theOrderCode }) {
     return (
 
         <div className="container mt-4">
-
-            <h2 className="text-center mb-4">
-                Grocery Items Available
-            </h2>
 
             {error !== "" &&
                 <Alert variant="danger">
@@ -156,7 +153,7 @@ function FetchProducts({ theOrderCode }) {
                                     </Form.Group>
 
                                     <Button
-                                        variant="success"
+                                        style={buttonStyle}
                                         disabled={addingId === product.id}
                                         onClick={() => handleAddToOrder(product)}
                                     >

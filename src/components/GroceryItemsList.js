@@ -6,6 +6,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { ListGroup, Button } from 'react-bootstrap';
 import { Alert } from 'react-bootstrap';
 import { PencilSquare, Trash, CheckLg } from 'react-bootstrap-icons';
+import { buttonStyle, editButtonStyle, deleteButtonStyle } from './buttonStyles';
 const GroceryItem = ({ item, index, moveItem, handleDelete, updateOrder, theOrderCode }) => {
   const [, ref] = useDrag({
     type: 'GROCERY_ITEM',
@@ -38,10 +39,10 @@ const GroceryItem = ({ item, index, moveItem, handleDelete, updateOrder, theOrde
       </p>
 
       <div className="btn-group" role="group">
-        <Link to={`/edit/${item.itemId}/${theOrderCode}`} className="btn btn-info mr-2">
+        <Link to={`/edit/${item.itemId}/${theOrderCode}`} className="btn btn-info mr-2" style={{ ...editButtonStyle, marginRight: '0.2rem' }}>
           <PencilSquare size={20} /> Edit
         </Link>
-        <Button variant="danger" onClick={() => handleDelete(item.itemId, item.orderCode)}>
+        <Button onClick={() => handleDelete(item.itemId, item.orderCode)} style={{ ...deleteButtonStyle, marginLeft: '0.2rem' }}>
           <Trash size={20} /> Delete
         </Button>
       </div>
@@ -137,8 +138,8 @@ const GroceryItemsList = ({ theOrderCode }) => {
             <h2 className="mb-4">Grocery Items</h2>
 
             <div>
-              <Link to={`/payTheOrder/${theOrderCode}`} className="btn btn-success mb-3">
-                Place Order
+              <Link to={`/payTheOrder/${theOrderCode}`} className="btn btn-success mb-3" style={buttonStyle}>
+                Place The Order
               </Link>
               <br />
               <ListGroup>

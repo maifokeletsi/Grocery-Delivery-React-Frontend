@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Container, Row, Col } from 'react-bootstrap';
+import { buttonStyle, editButtonStyle, deleteButtonStyle } from './buttonStyles';
 
 const GroceryItemsToBeSold = ({ theOrderCode }) => {
   const [data, setData] = useState([]);
@@ -47,43 +49,47 @@ const GroceryItemsToBeSold = ({ theOrderCode }) => {
   };
 
   return (
-    <>
+    <Container className="mt-4">
+      <Row className="justify-content-center">
+        <Col xs={12} md={8}>
 
-      {(data.length > 0) && <div>
-        <h2>Grocery Items</h2>
-       
-          <div>
-            <Link to={`/payTheOrder/${theOrderCode}`}><button>Place Order</button></Link>
-          <br />
-            <ul>
-              {Array.isArray(data) && data.map(item => (
-                <li key={item.itemId}>
-                  <p>Grocery Item: {item.groceryItem} || Brand: {item.itemBrand} || Size: {item.itemSize} || Number of Items: {item.numOfItems}</p>
+          {(data.length > 0) && <div className="text-center">
+            <h2 className="mb-4">Grocery Items</h2>
 
-                  <Link to={`/edit/${item.itemId}/${theOrderCode}`}><button>Edit</button></Link>
+            <div>
+              <Link to={`/payTheOrder/${theOrderCode}`}><button style={buttonStyle}>Place The Order</button></Link>
+              <br />
+              <ul className="list-unstyled mt-4">
+                {Array.isArray(data) && data.map(item => (
+                  <li key={item.itemId} className="mb-3">
+                    <p>Grocery Item: {item.groceryItem} || Brand: {item.itemBrand} || Size: {item.itemSize} || Number of Items: {item.numOfItems}</p>
 
-                  <button onClick={() => handleDelete(item.itemId, item.orderCode)}>Delete</button>
-                </li>
-              ))}
-            </ul>
+                    <Link to={`/edit/${item.itemId}/${theOrderCode}`}><button style={editButtonStyle}>Edit</button></Link>
 
-            {error && (
-              <div>
-                <h2>Error:</h2>
-                <p>{error}</p>
-              </div>
-            )}
+                    <button onClick={() => handleDelete(item.itemId, item.orderCode)} style={deleteButtonStyle}>Delete</button>
+                  </li>
+                ))}
+              </ul>
+
+              {error && (
+                <div>
+                  <h2>Error:</h2>
+                  <p>{error}</p>
+                </div>
+              )}
+            </div>
           </div>
-      </div>
-      }
+          }
 
 
-      {(data.length === 0) &&
-        <div>
-          <h4>There are no items added</h4>
-          <h4>Add Items in order to view them</h4>
-        </div>}
-    </>
+          {(data.length === 0) &&
+            <div className="text-center">
+              <h4>There are no items added</h4>
+              <h4>Add Items in order to view them</h4>
+            </div>}
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

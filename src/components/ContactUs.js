@@ -5,7 +5,6 @@ import CourierDirections from './CourierDirections';
 export default function ContactUs() {
   return (
     <div>
-      <h5>Contact Details</h5>
       <p>
         
         Phone Call Us<Phone size={20} className="mr-2" /> At: 0766682639

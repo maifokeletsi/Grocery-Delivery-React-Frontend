@@ -133,97 +133,96 @@ const AuthComponent = ({ handleVariable1Change }) => {
   };
 
   return (
-    <Container>
-    <Row>
-      <Col>
-        <h4>LogIn Credentials</h4>
-        {(rstPswdForm === false) && (
-          <div>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group>
+    <Container className="mt-4">
+      <Row className="justify-content-center">
+        <Col xs={12} md={6} lg={5}>
+          {(rstPswdForm === false) && (
+            <div className="mb-4">
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Cellphone No. :</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="reqUserNumber"
+                    placeholder="Enter phone number"
+                    value={formData.reqUserNumber}
+                    onChange={handleChange}
+                    required
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label>Password:</Form.Label>
+                  <Form.Control
+                    type="password"
+                    name="password"
+                    placeholder="Enter password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
+                </Form.Group>
+                <Button type="submit" className="login-button">
+                  Log In
+                </Button>
+              </Form>
+              <h5 className="mt-4">
+                <strong>Did You Forget Password?</strong>
+              </h5>
+              <Button onClick={displayRstPsswdForm} style={buttonStyle} className="mt-2">
+                Reset Password Here
+              </Button>
+            </div>
+          )}
+
+          {rstPswdForm && (
+            <Form onSubmit={handleSubmit1}>
+              <Form.Group className="mb-3">
                 <Form.Label>Cellphone No. :</Form.Label>
                 <Form.Control
                   type="text"
-                  name="reqUserNumber"
-                  placeholder="Enter phone number"
-                  value={formData.reqUserNumber}
-                  onChange={handleChange}
+                  name="rstPswdNumber"
+                  placeholder="Enter Cellphone No. Here"
+                  value={rstPswdNumber}
+                  onChange={handleChange1}
                   required
                 />
               </Form.Group>
-              <Form.Group>
-                <Form.Label>Password:</Form.Label>
+              <Button type="submit">Submit</Button>
+            </Form>
+          )}
+
+          {securityQuestion_S && rstPswdForm && (
+            <Form onSubmit={handleSubmit3} className="mt-4">
+              <Form.Group className="mb-3">
+                <Form.Label>{securityQuestion_S}:</Form.Label>
                 <Form.Control
                   type="password"
-                  name="password"
-                  placeholder="Enter password"
-                  value={formData.password}
-                  onChange={handleChange}
+                  name="securityAnswer"
+                  placeholder="Answer Security Question Here"
+                  value={securityAnswer}
+                  onChange={handleChange2}
                   required
                 />
               </Form.Group>
-              <Button type="submit" className="login-button">
-                Log In
+              <Form.Group className="mb-3">
+                <Form.Label>New Password:</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="newPassword"
+                  placeholder="Enter New Password Here"
+                  value={newPassword}
+                  onChange={handleChange3}
+                  required
+                />
+              </Form.Group>
+              <Button type="submit" style={buttonStyle}>
+                Update Password
               </Button>
             </Form>
-            <h5>
-              <strong>Did You Forget Password?</strong>
-            </h5>
-            <Button onClick={displayRstPsswdForm} style={buttonStyle}>
-              Reset Password Here
-            </Button>
-          </div>
-        )}
-
-        {rstPswdForm && (
-          <Form onSubmit={handleSubmit1}>
-            <Form.Group>
-              <Form.Label>Cellphone No. :</Form.Label>
-              <Form.Control
-                type="text"
-                name="rstPswdNumber"
-                placeholder="Enter Cellphone No. Here"
-                value={rstPswdNumber}
-                onChange={handleChange1}
-                required
-              />
-            </Form.Group>
-            <Button type="submit">Submit</Button>
-          </Form>
-        )}
-
-        {securityQuestion_S && rstPswdForm && (
-          <Form onSubmit={handleSubmit3}>
-            <Form.Group>
-              <Form.Label>{securityQuestion_S}:</Form.Label>
-              <Form.Control
-                type="password"
-                name="securityAnswer"
-                placeholder="Answer Security Question Here"
-                value={securityAnswer}
-                onChange={handleChange2}
-                required
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>New Password:</Form.Label>
-              <Form.Control
-                type="password"
-                name="newPassword"
-                placeholder="Enter New Password Here"
-                value={newPassword}
-                onChange={handleChange3}
-                required
-              />
-            </Form.Group>
-            <Button type="submit" style={buttonStyle}>
-              Update Password
-            </Button>
-          </Form>
-        )}
-      </Col>
-    </Row>
-  </Container>
+          )}
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

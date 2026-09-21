@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { Form, Button, Col, Row } from 'react-bootstrap';
+import { Container, Form, Button, Col, Row } from 'react-bootstrap';
+import { buttonStyle } from './buttonStyles';
 
 const SignUpForm = ({ orderIsPayed, orderIsAccepted, orderIsDelivered, displayOrderToPublic }) => {
   const { theOrderCode } = useParams();
@@ -165,13 +166,14 @@ const SignUpForm = ({ orderIsPayed, orderIsAccepted, orderIsDelivered, displayOr
   };
 
   return (
-    <div>
-      <h4>Payment Details</h4>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <Form>
+    <Container className="mt-4">
+      <Row className="justify-content-center">
+        <Col xs={12} md={6} lg={5}>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          <Form>
         <Row>
           <Col>
-            <Form.Group controlId="nameOfUser">
+            <Form.Group className="mb-3" controlId="nameOfUser">
               <Form.Label>Enter Your Name:</Form.Label>
               <Form.Control
                 type="text"
@@ -186,7 +188,7 @@ const SignUpForm = ({ orderIsPayed, orderIsAccepted, orderIsDelivered, displayOr
         </Row>
         <Row>
           <Col>
-            <Form.Group controlId="reqUserNumber">
+            <Form.Group className="mb-3" controlId="reqUserNumber">
               <Form.Label>Cellphone No:</Form.Label>
               <Form.Control
                 type="text"
@@ -201,7 +203,7 @@ const SignUpForm = ({ orderIsPayed, orderIsAccepted, orderIsDelivered, displayOr
         </Row>
         <Row>
           <Col>
-            <Form.Group controlId="address">
+            <Form.Group className="mb-3" controlId="address">
               <Form.Label>Delivery Address / Current Location:</Form.Label>
               <Form.Control
                 type="text"
@@ -212,10 +214,8 @@ const SignUpForm = ({ orderIsPayed, orderIsAccepted, orderIsDelivered, displayOr
                 required
               />
               <Button
-                variant="outline-secondary"
-                size="sm"
-                style={{ marginTop: '5px' }}
                 onClick={handleGetCurrentLocation}
+                style={{ ...buttonStyle, marginTop: '5px' }}
               >
                 Use Current Location
               </Button>
@@ -224,7 +224,7 @@ const SignUpForm = ({ orderIsPayed, orderIsAccepted, orderIsDelivered, displayOr
         </Row>
         <Row>
           <Col>
-            <Form.Group controlId="password">
+            <Form.Group className="mb-3" controlId="password">
               <Form.Label>Password:</Form.Label>
               <Form.Control
                 type="password"
@@ -239,7 +239,7 @@ const SignUpForm = ({ orderIsPayed, orderIsAccepted, orderIsDelivered, displayOr
         </Row>
         <Row>
           <Col>
-            <Form.Group controlId="password1">
+            <Form.Group className="mb-3" controlId="password1">
               <Form.Label>Confirm Password:</Form.Label>
               <Form.Control
                 type="password"
@@ -254,7 +254,7 @@ const SignUpForm = ({ orderIsPayed, orderIsAccepted, orderIsDelivered, displayOr
         </Row>
         <Row>
           <Col>
-            <Form.Group controlId="dueAmt">
+            <Form.Group className="mb-3" controlId="dueAmt">
               <Form.Label>Enter Estimated Cost:</Form.Label>
               <Form.Control
                 type="text"
@@ -269,7 +269,7 @@ const SignUpForm = ({ orderIsPayed, orderIsAccepted, orderIsDelivered, displayOr
         </Row>
         <Row>
           <Col>
-            <Form.Group controlId="securityQuestion">
+            <Form.Group className="mb-3" controlId="securityQuestion">
               <Form.Label>Select Security Question:</Form.Label>
               <Form.Control
                 as="select"
@@ -296,7 +296,7 @@ const SignUpForm = ({ orderIsPayed, orderIsAccepted, orderIsDelivered, displayOr
         </Row>
         <Row>
           <Col>
-            <Form.Group controlId="securityAnswer">
+            <Form.Group className="mb-3" controlId="securityAnswer">
               <Form.Label>Answer Security Question:</Form.Label>
               <Form.Control
                 type="text"
@@ -310,10 +310,12 @@ const SignUpForm = ({ orderIsPayed, orderIsAccepted, orderIsDelivered, displayOr
           </Col>
         </Row>
         <Button type="submit" style={{ display: 'none' }}></Button>
-      </Form>
-      <br />
-      <Button onClick={handleNavigate}>Pay</Button>
-    </div>
+          </Form>
+          <br />
+          <Button onClick={handleNavigate} style={buttonStyle}>Pay</Button>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

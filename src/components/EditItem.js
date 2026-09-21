@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { buttonStyle } from './buttonStyles';
 
 export default function EditItem() {
   const { itemId, theOrderCode } = useParams();
@@ -68,32 +69,29 @@ export default function EditItem() {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <h2>Edit Grocery Item</h2>
+    <Container className="mt-4">
+      <Row className="justify-content-center">
+        <Col xs={12} md={6} lg={5}>
+          <h2 className="mb-4">Edit Grocery Item</h2>
           <Form onSubmit={handleUpdate}>
-            <Form.Group controlId="groceryItem">
+            <Form.Group className="mb-3" controlId="groceryItem">
               <Form.Label>Grocery Item</Form.Label>
               <Form.Control type="text" name="groceryItem" placeholder="Grocery Item" onChange={handleChange} value={item.groceryItem} required />
             </Form.Group>
 
-            <Form.Group controlId="itemBrand">
-              <Form.Label>Item Brand</Form.Label>
-              <Form.Control type="text" name="itemBrand" placeholder="Item Brand" onChange={handleChange} value={item.itemBrand} required />
-            </Form.Group>
+            
 
-            <Form.Group controlId="itemSize">
+            <Form.Group className="mb-3" controlId="itemSize">
               <Form.Label>Item Size</Form.Label>
               <Form.Control type="text" name="itemSize" placeholder="Item Size" onChange={handleChange} value={item.itemSize} required />
             </Form.Group>
 
-            <Form.Group controlId="numOfItems">
+            <Form.Group className="mb-3" controlId="numOfItems">
               <Form.Label>Number of Items</Form.Label>
               <Form.Control type="text" name="numOfItems" placeholder="Number of Items" onChange={handleChange} value={item.numOfItems} required />
             </Form.Group>
 
-            <Button type="submit" variant="success">
+            <Button type="submit" style={buttonStyle}>
               Update Item
             </Button>
           </Form>
